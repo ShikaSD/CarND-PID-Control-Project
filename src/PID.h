@@ -1,22 +1,10 @@
 #ifndef PID_H
 #define PID_H
 
+#include <vector>
+
 class PID {
 public:
-  /*
-  * Errors
-  */
-  double p_error;
-  double i_error;
-  double d_error;
-
-  /*
-  * Coefficients
-  */ 
-  double Kp;
-  double Ki;
-  double Kd;
-
   /*
   * Constructor
   */
@@ -41,6 +29,19 @@ public:
   * Calculate the total PID error.
   */
   double TotalError();
+
+  private:
+
+    /*
+     * Coefficients
+     */
+    double Kp;
+    double Ki;
+    double Kd;
+
+    double last_error;
+    double sum_errors;
+    double diff_error;
 };
 
 #endif /* PID_H */
